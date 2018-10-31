@@ -1,0 +1,25 @@
+{
+  "name": "mdbible",
+  "version": "0.1.0",
+  "description": "Include bible citations in Markdown documents.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "bible"
+  ],
+  "author": {
+    "name": "Tobias Kiertscher",
+    "email": "dev@mastersign.de"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "gulp-text-simple": "^0.4.0",
+    "lodash": "^4.17.11",
+    "magnalexjs": "^0.1.0"
+  },
+  "devDependencies": {
+    "mocha": "^5.2.0"
+  }
+}
