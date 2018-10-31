@@ -1,4 +1,4 @@
 MdBible
 =======
 
-> Include bible quotes into Markdown documents.
+> Include Bible quotes into Markdown documents.
