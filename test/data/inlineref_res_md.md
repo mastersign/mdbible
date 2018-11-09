@@ -1,0 +1,1 @@
+Some text with a reference Joh 3:16 [KJV].

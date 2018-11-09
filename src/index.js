@@ -25,14 +25,14 @@ function blockQuote(r, opts) {
 	if (_.isEmpty(verses)) return error('Bible Reference Not Found: "' + r + '"', opts)
 	switch (opts.format) {
 		case 'markdown':
-			return library.toMarkdown(ref, verses, opts.formatLanguage)
+			return library.toMarkdown(ref, verses, opts)
 		case 'html':
 			return '~~~{=html}\n' +
-				library.toHTML(ref, verses, opts.formatLanguage, opts.cssClass) +
+				library.toHTML(ref, verses, opts) +
 				'\n~~~'
 		case 'tex':
 			return '~~~{=tex}\n' +
-				library.toLaTeX(ref, verses, opts.formatLanguage, opts.latexQuoteEnvironment) +
+				library.toLaTeX(ref, verses, opts) +
 				'\n~~~'
 		default:
 			throw new Error('Unsupported format: ' + opts.format)
@@ -42,8 +42,7 @@ function blockQuote(r, opts) {
 function inlineQuote(r, opts) {
 	const ref = library.parseReference(r, opts.refLanguage)
 	if (!ref) return error('Invalid Bible Reference: "' + r + '"', opts)
-	const l = library.getLanguage(opts.formatLanguage)
-	return ref.format(l)
+	return ref.format(library, opts)
 }
 
 function replaceQuotes(text, opts) {
