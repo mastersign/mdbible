@@ -20,6 +20,8 @@
     "magnalexjs": "^0.1.0"
   },
   "devDependencies": {
+    "xmlbible-kjv": "^1.0.0",
+    "xmlbible-lut1912": "^1.0.0",
     "mocha": "^5.2.0"
   }
 }
