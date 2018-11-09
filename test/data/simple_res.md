@@ -4,4 +4,4 @@ Some text.
 > 
 > _Joh 3:16 [KJV]_
 
-Some more text.
+Some more text with a reference Joh 3:16 [KJV].

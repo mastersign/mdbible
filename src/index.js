@@ -39,9 +39,18 @@ function blockQuote(r, opts) {
 	}
 }
 
+function inlineQuote(r, opts) {
+	const ref = library.parseReference(r, opts.refLanguage)
+	if (!ref) return error('Invalid Bible Reference: "' + r + '"', opts)
+	const l = library.getLanguage(opts.formatLanguage)
+	return ref.format(l)
+}
+
 function replaceQuotes(text, opts) {
-    const pattern = /^\!\(\& ([^\)]+)\)\s*$/gm
-    text = text.replace(pattern, (m, r) => blockQuote(r, opts) + os.EOL)
+    const blockPattern = /^\!\(\& ([^\)]+)\)\s*$/gm
+    text = text.replace(blockPattern, (m, r) => blockQuote(r, opts) + os.EOL)
+    const inlinePattern = /\(\& ([^\)]+)\)/gm
+    text = text.replace(inlinePattern, (m, r) => inlineQuote(r, opts))
     return text
 }
 

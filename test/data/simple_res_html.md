@@ -9,4 +9,4 @@ Some text.
 </blockquote>
 ~~~
 
-Some more text.
+Some more text with a reference Joh 3:16 [KJV].
