@@ -29,8 +29,8 @@ describe('MdBible', () => {
 	describe('for LaTeX format', () => {
 		it('should replace reference with block quote', () => {
 			const result = mdbible.readFileSync('test/data/simple_src.md',
-				{sourceEncoding: 'utf8', format: 'latex'})
-			const expected = fs.readFileSync('test/data/simple_res_latex.md', {encoding: 'utf8'})
+				{sourceEncoding: 'utf8', format: 'tex'})
+			const expected = fs.readFileSync('test/data/simple_res_tex.md', {encoding: 'utf8'})
 			assertText(result, expected)
 		})
 	})
