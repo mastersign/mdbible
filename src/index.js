@@ -11,17 +11,11 @@ const defaultOptions = {
 	format: 'markdown',
 	cssClass: 'mdbible',
 	cssErrorClass: 'mdbible-error',
+	latexQuoteEnvironment: 'quote',
 }
 
-function error(msg, opts) {
-	switch (opts.format) {
-		case 'markdown':
-			return '**' + msg + '**'
-		case 'html':
-			return '<p class="' + opts.cssErrorClass + '">' + msg + '</p>'
-		default:
-			throw new Error('Unsupported format: ' + opts.format)
-	}
+function error(msg) {
+	return '**\\[MdBible] ' + msg + '**'
 }
 
 function blockQuote(r, opts) {
@@ -33,7 +27,15 @@ function blockQuote(r, opts) {
 		case 'markdown':
 			return library.toMarkdown(ref, verses, opts.formatLanguage)
 		case 'html':
-			return library.toHTML(ref, verses, opts.formatLanguage, opts.cssClass)
+			return '~~~{=html}\n' +
+				library.toHTML(ref, verses, opts.formatLanguage, opts.cssClass) +
+				'\n~~~'
+		case 'tex':
+			return '~~~{=tex}\n' +
+				library.toLaTeX(ref, verses, opts.formatLanguage, opts.latexQuoteEnvironment) +
+				'\n~~~'
+		default:
+			throw new Error('Unsupported format: ' + opts.format)
 	}
 }
 
