@@ -32,6 +32,25 @@ describe('MdBible', () => {
 		fileCase('multi', 'md')
 	})
 
+	describe('without explicit translation', () => {
+		it('should replace inline reference with formatted reference', () => {
+			fileCase('inlineref-wt', 'md')
+		})
+
+		it('should replace reference with block quote', () => {
+			fileCase('single-wt', 'md')
+		})
+	})
+	describe('without explicit but changed default translation', () => {
+		it('should replace inline reference with formatted reference', () => {
+			fileCase('inlineref-wt-dl', 'md', {defaultTranslation: 'LUT1912'})
+		})
+
+		it('should replace reference with block quote', () => {
+			fileCase('single-wt-dl', 'md', {defaultTranslation: 'LUT1912'})
+		})
+	})
+
 	describe('for HTML format', () => {
 		it('should replace reference with block quote', () => {
 			fileCase('single', 'html', {format: 'html'})

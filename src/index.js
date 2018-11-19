@@ -6,12 +6,16 @@ const textTransformation = require('gulp-text-simple')
 const library = magnalex.library()
 
 const defaultOptions = {
+	// MagnaLex JS options
 	refLanguage: 'en',
 	formatLanguage: 'en',
 	format: 'markdown',
 	cssClass: 'mdbible',
 	cssErrorClass: 'mdbible-error',
 	latexQuoteEnvironment: 'quote',
+	alwaysShowTranslation: false,
+	// MdBible options
+	defaultTranslation: 'KJV',
 }
 
 function error(msg) {
@@ -46,6 +50,7 @@ function inlineQuote(r, opts) {
 }
 
 function replaceQuotes(text, opts) {
+	if (opts.defaultTranslation) library.setDefaultTranslation(opts.defaultTranslation)
     const blockPattern = /^\!\(\& ([^\)]+)\)\s*$/gm
     text = text.replace(blockPattern, (m, r) => blockQuote(r, opts) + os.EOL)
     const inlinePattern = /\(\& ([^\)]+)\)/gm
