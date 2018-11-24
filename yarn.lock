@@ -106,10 +106,10 @@ lodash@^4.0.0, lodash@^4.17.11:
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
   integrity sha512-cQKh8igo5QUhZ7lg38DYWAxMvjSAKG0A8wGSVimP07SIUEK2UO+arSRKbRZWtelMtN5V0Hkwh5ryOto/SshYIg==
 
-magnalexjs@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/magnalexjs/-/magnalexjs-0.1.1.tgz#25a06d9920c7e41393a5c4db2bd974ca7fbfa78f"
-  integrity sha512-L9JuedQWHTm3MK9p+pgd46RNm7lVHaa4dKUbcsl+H8vJGtndIxcJTdIGtYJT2Nr6MLTjTFo8c8gw338BRTO7Ew==
+magnalexjs@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/magnalexjs/-/magnalexjs-0.1.2.tgz#8eade489201ce00cc0dc2c074a0b1be6d0607d5e"
+  integrity sha512-D1RxYjJ4FL+T2hJ5wsRj5oGMkNuwIHcSY2jM5bxQVQAU+5/JhvHX2efhe2CdodkDHMyNC6ThJ3jSSUOCpD12Sg==
   dependencies:
     lodash "^4.17.11"
     xmldom "^0.1.27"
