@@ -54,11 +54,47 @@ function inlineQuote(r, opts) {
 	return ref.format(library, quoteSrcOpts)
 }
 
+function listOfLanguages() {
+	return _.join(
+		_.map(
+			_.values(library.languages),
+			l => l.langTag === library.defaults.langTag ?
+				`* **${l.langTag}**` :
+				`* ${l.langTag}`),
+		os.EOL)
+}
+
+function listOfTranslations() {
+	return _.join(
+		_.map(
+			_.values(library.translations),
+			t => t.shortName === library.defaults.translation ?
+				`* \`${t.shortName}\` **${t.name}**` :
+				`* \`${t.shortName}\` ${t.name}`),
+		os.EOL)
+}
+
+function listOfBooks(opts) {
+	const l = library.getLanguage(opts.language)
+	return _.join(
+		_.map(
+			_.values(l.books),
+			bn => `* \`${bn.id}\` ${bn.shortName} -- ${bn.name}`),
+		os.EOL)
+}
+
 function replaceQuotes(text, opts) {
-	if (opts.defaultTranslation) library.setDefaultTranslation(opts.defaultTranslation)
+    const languageListPattern = /^\!\(\& languages\)\s*$/gm
+    const translationListPattern = /^\!\(\& translations\)\s*$/gm
+    const bookListPattern = /^\!\(\& books\)\s*$/gm
     const blockPattern = /^\!\(\& ([^\)]+)\)\s*$/gm
-    text = text.replace(blockPattern, (m, r) => blockQuote(r, opts) + os.EOL)
     const inlinePattern = /\(\& ([^\)]+)\)/gm
+    text = text.replace()
+	if (opts.defaultTranslation) library.setDefaultTranslation(opts.defaultTranslation)
+	text = text.replace(languageListPattern, () => listOfLanguages() + os.EOL)
+	text = text.replace(translationListPattern, () => listOfTranslations() + os.EOL)
+	text = text.replace(bookListPattern, () => listOfBooks(opts) + os.EOL)
+    text = text.replace(blockPattern, (m, r) => blockQuote(r, opts) + os.EOL)
     text = text.replace(inlinePattern, (m, r) => inlineQuote(r, opts))
     return text
 }
