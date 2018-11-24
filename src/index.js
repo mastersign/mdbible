@@ -8,7 +8,7 @@ const library = magnalex.library()
 const defaultOptions = {
 	// MagnaLex JS options
 	refLanguage: 'en',
-	formatLanguage: 'en',
+	language: 'en',
 	format: 'markdown',
 	cssClass: 'mdbible',
 	cssErrorClass: 'mdbible-error',
