@@ -46,7 +46,8 @@ function blockQuote(r, opts) {
 function inlineQuote(r, opts) {
 	const ref = library.parseReference(r, opts.refLanguage)
 	if (!ref) return error('Invalid Bible Reference: "' + r + '"', opts)
-	return ref.format(library, opts)
+	const quoteSrcOpts = library.setupQuoteSourceOptions(ref, ref.translation ? ref : null, opts)
+	return ref.format(library, quoteSrcOpts)
 }
 
 function replaceQuotes(text, opts) {

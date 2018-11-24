@@ -19,6 +19,11 @@ function fileCase(name, format, opt) {
 	assertText(result, expected)
 }
 
+function strCase(source, expected, opt) {
+	const result = mdbible(source, opt)
+	assertText(result, expected)
+}
+
 describe('MdBible', () => {
 	it('should replace inline reference with formatted reference', () => {
 		fileCase('inlineref', 'md')
@@ -34,7 +39,10 @@ describe('MdBible', () => {
 
 	describe('without explicit translation', () => {
 		it('should replace inline reference with formatted reference', () => {
-			fileCase('inlineref-wt', 'md')
+			strCase(
+				'ABC (& Gen 1:1) XYZ',
+				'ABC Gen 1:1 XYZ',
+				{})
 		})
 
 		it('should replace reference with block quote', () => {
@@ -42,8 +50,29 @@ describe('MdBible', () => {
 		})
 	})
 	describe('without explicit but changed default translation', () => {
-		it('should replace inline reference with formatted reference', () => {
-			fileCase('inlineref-wt-dl', 'md', {defaultTranslation: 'LUT1912'})
+		it('should format inline reference with original book name', () => {
+			strCase(
+				'ABC (& Gen 1:1) XYZ',
+				'ABC 1. Mo 1:1 XYZ',
+				{defaultTranslation: 'LUT1912', useOriginalBookName: true})
+		})
+		it('should format inline reference with original and translated book name', () => {
+			strCase(
+				'ABC (& Gen 1:1) XYZ',
+				'ABC 1. Mo (Gen) 1:1 XYZ',
+				{defaultTranslation: 'LUT1912', useOriginalBookName: true, translateBookName: true})
+		})
+		it('should format inline reference with translated book name', () => {
+			strCase(
+				'ABC (& Gen 1:1) XYZ',
+				'ABC Gen 1:1 XYZ',
+				{defaultTranslation: 'LUT1912', useOriginalBookName: false})
+		})
+		it('should format inline reference with translated and original book name', () => {
+			strCase(
+				'ABC (& Gen 1:1) XYZ',
+				'ABC Gen (1. Mo) 1:1 XYZ',
+				{defaultTranslation: 'LUT1912', useOriginalBookName: false, translateBookName: true})
 		})
 
 		it('should replace reference with block quote', () => {
