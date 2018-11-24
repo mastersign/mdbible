@@ -50,11 +50,11 @@ describe('MdBible', () => {
 		})
 	})
 	describe('without explicit but changed default translation', () => {
-		it('should format inline reference with original book name', () => {
+		it('should format inline reference with original book name by option', () => {
 			strCase(
 				'ABC (& Gen 1:1) XYZ',
 				'ABC 1. Mo 1:1 XYZ',
-				{defaultTranslation: 'LUT1912', useOriginalBookName: true})
+				{defaultTranslation: 'LUT1912', useOriginalBookName: true, translateBookName: false})
 		})
 		it('should format inline reference with original and translated book name', () => {
 			strCase(
@@ -66,7 +66,7 @@ describe('MdBible', () => {
 			strCase(
 				'ABC (& Gen 1:1) XYZ',
 				'ABC Gen 1:1 XYZ',
-				{defaultTranslation: 'LUT1912', useOriginalBookName: false})
+				{defaultTranslation: 'LUT1912', useOriginalBookName: false, translateBookName: false})
 		})
 		it('should format inline reference with translated and original book name', () => {
 			strCase(

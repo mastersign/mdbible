@@ -14,6 +14,10 @@ const defaultOptions = {
 	cssErrorClass: 'mdbible-error',
 	latexQuoteEnvironment: 'quote',
 	alwaysShowTranslation: false,
+	fullTranslationName: false,
+	useOriginalBookName: false,
+	translateBookName: true,
+	fullBookName: false,
 	// MdBible options
 	defaultTranslation: 'KJV',
 }
